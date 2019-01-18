@@ -81,12 +81,16 @@ public final class Main {
   private Main() {
   }
 
+
+
   /**
    * Report parse error.
    */
   public static void parseError(String str) {
     System.err.println("config error in '" + configFile + "': " + str);
   }
+
+
 
   /**
    * Read single camera configuration.
@@ -119,6 +123,8 @@ public final class Main {
     return true;
   }
 
+
+
   /**
    * Read configuration file.
    */
@@ -130,6 +136,7 @@ public final class Main {
       top = new JsonParser().parse(Files.newBufferedReader(Paths.get(configFile)));
     } catch (IOException ex) {
       System.err.println("could not open '" + configFile + "': " + ex);
+
       return false;
     }
 
@@ -172,7 +179,6 @@ public final class Main {
         return false;
       }
     }
-
     return true;
   }
 
@@ -180,7 +186,7 @@ public final class Main {
    * Start running the camera.
    */
   public static VideoSource startCamera(CameraConfig config) {
-    System.out.println("Starting camera '" + config.name + "' on " + config.path);
+    System.out.println("Starting camera ----------------------------'" + config.name + "' on " + config.path);
     CameraServer inst = CameraServer.getInstance();
     UsbCamera camera = new UsbCamera(config.name, config.path);
     MjpegServer server = inst.startAutomaticCapture(camera);
@@ -213,6 +219,7 @@ public final class Main {
    * Main.
    */
   public static void main(String... args) {
+    System.out.println("**************************************");
     if (args.length > 0) {
       configFile = args[0];
     }
