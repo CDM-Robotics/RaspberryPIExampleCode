@@ -106,16 +106,8 @@ public final class Main {
 
         // start image processing on camera 0 if present
         if (cameras.size() >= 1) {
-            VisionThread visionThread = new VisionThread(cameras.get(0), new GripPipelineBasic(), pipeline -> {
-                // https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/674733-using-generated-code-in-a-robot-program
-                // work out where the center of the hatch is
-                // if (!pipeline.filterContoursOutput().isEmpty()) {
-                // Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
-                // synchronized (imgLock) {
-                // centerX = r.x + (r.width / 2);
-                // }
-                // }
-            });
+            VisionThread visionThread = new VisionThread(cameras.get(0), new GripPipelineBasic(),
+                    new GPBasicListener());
             visionThread.start();
         }
 
@@ -127,6 +119,17 @@ public final class Main {
                 return;
             }
         }
+    }
+
+    private void ProcessPipeline(VisionPipeline pipe) {
+        // https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/674733-using-generated-code-in-a-robot-program
+        // work out where the center of the hatch is
+        // if (!pipeline.filterContoursOutput().isEmpty()) {
+        // Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+        // synchronized (imgLock) {
+        // centerX = r.x + (r.width / 2);
+        // }
+        // }
     }
 
     /**
