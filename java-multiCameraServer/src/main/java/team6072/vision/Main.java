@@ -121,17 +121,6 @@ public final class Main {
         }
     }
 
-    private void ProcessPipeline(VisionPipeline pipe) {
-        // https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/674733-using-generated-code-in-a-robot-program
-        // work out where the center of the hatch is
-        // if (!pipeline.filterContoursOutput().isEmpty()) {
-        // Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
-        // synchronized (imgLock) {
-        // centerX = r.x + (r.width / 2);
-        // }
-        // }
-    }
-
     /**
      * Read configuration file. Return FALSE if fail
      */
