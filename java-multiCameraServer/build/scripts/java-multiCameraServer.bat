@@ -1,21 +1,20 @@
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
-@rem  Gradle startup script for Windows
+@rem  java-multiCameraServer startup script for Windows
 @rem
 @rem ##########################################################################
 
 @rem Set local scope for the variables with windows NT shell
 if "%OS%"=="Windows_NT" setlocal
 
-@rem https://stackoverflow.com/questions/5034076/what-does-dp0-mean-and-how-does-it-work/5034119
 set DIRNAME=%~dp0
 if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
-set APP_HOME=%DIRNAME%
+set APP_HOME=%DIRNAME%..
 
-@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="-Xmx64m"
+@rem Add default JVM options here. You can also use JAVA_OPTS and JAVA_MULTI_CAMERA_SERVER_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS=
 
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
@@ -64,28 +63,19 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%gradle\wrapper\gradle-wrapper.jar
+set CLASSPATH=%APP_HOME%\lib\java-multiCameraServer.jar;%APP_HOME%\lib\gson-2.8.5.jar;%APP_HOME%\lib\wpiutil.jar;%APP_HOME%\lib\ntcore.jar;%APP_HOME%\lib\cscore.jar;%APP_HOME%\lib\cameraserver.jar;%APP_HOME%\lib\opencv-344.jar
 
-echo .................................
-echo Java home:      %JAVA_HOME%
-echo JVM Opts:       %DEFAULT_JVM_OPTS%
-echo Java Opts:      %JAVA_OPTS%
-echo Gradle Opts:    %GRADLE_OPTS%
-echo AppBaseName:    %APP_BASE_NAME%
-echo Classpath:      %CLASSPATH%
-echo .................................
-
-@rem Execute Gradle
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %CMD_LINE_ARGS%
+@rem Execute java-multiCameraServer
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %JAVA_MULTI_CAMERA_SERVER_OPTS%  -classpath "%CLASSPATH%" Main %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
 if "%ERRORLEVEL%"=="0" goto mainEnd
 
 :fail
-rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem Set variable JAVA_MULTI_CAMERA_SERVER_EXIT_CONSOLE if you need the _script_ return code instead of
 rem the _cmd.exe /c_ return code!
-if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
+if  not "" == "%JAVA_MULTI_CAMERA_SERVER_EXIT_CONSOLE%" exit 1
 exit /b 1
 
 :mainEnd
